@@ -19,6 +19,8 @@
     <version-string>${project.version} Commit:${git.commit.id}</version-string>
 
     <version.lombok>1.18.16</version.lombok>
+    <version.worldguard>7.0.2</version.worldguard>
+    <version.spigot-api>1.14.4-R0.1-SNAPSHOT</version.spigot-api>
     <version.git-commit-id-plugin>4.0.3</version.git-commit-id-plugin>
   </properties>
 
@@ -38,6 +40,27 @@
   </repositories>
 
   <dependencies>
+    <dependency>
+      <groupId>org.spigotmc</groupId>
+      <artifactId>spigot-api</artifactId>
+      <version>${version.spigot-api}</version>
+      <scope>provided</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>com.sk89q.worldguard</groupId>
+      <artifactId>worldguard-core</artifactId>
+      <version>${version.worldguard}</version>
+      <scope>provided</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>com.sk89q.worldguard</groupId>
+      <artifactId>worldguard-bukkit</artifactId>
+      <version>${version.worldguard}</version>
+      <scope>provided</scope>
+    </dependency>
+
     <dependency>
       <groupId>com.sk89q</groupId>
       <artifactId>worldedit</artifactId>

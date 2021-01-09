@@ -4,5 +4,6 @@ description: Postremus Wargear Fight Plugin
 website: http://dev.bukkit.org/bukkit-plugins/wargear-fight/
 author: postremus
 main: WarGear
+api-version: 1.15
 depend: [WorldEdit, WorldGuard, KitAPI]
 soft-depend: [Vault, AdminCmd, Essentials, CommandBook]
