@@ -4,20 +4,36 @@
                       http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>de.pro_crafting</groupId>
+  <parent>
+    <groupId>com.pro-crafting</groupId>
+    <artifactId>pc-parent</artifactId>
+    <version>10-SNAPSHOT</version>
+  </parent>
+
+  <groupId>com.pro-crafting.mc</groupId>
   <artifactId>WarGear</artifactId>
-  <version>0.12.0</version>
+  <version>0.13.0-SNAPSHOT</version>
 
   <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <project.build.number>-</project.build.number>
-    <project.build.version>${version} Build:${project.build.number}</project.build.version>
+    <git.commit.id>Automatically filled</git.commit.id>
+    <version-string>${project.version} Commit:${git.commit.id}</version-string>
+
+    <version.lombok>1.18.16</version.lombok>
+    <version.git-commit-id-plugin>4.0.3</version.git-commit-id-plugin>
   </properties>
 
   <repositories>
     <repository>
-      <id>postremus1996-snapshot</id>
-      <url>http://nexus.myplayplanet.net/content/groups/public/</url>
+      <id>spigot-repo</id>
+      <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
+    </repository>
+    <repository>
+      <id>sk89q-repo</id>
+      <url>https://maven.enginehub.org/repo/</url>
+    </repository>
+    <repository>
+      <id>CodeMC</id>
+      <url>https://repo.codemc.org/repository/maven-public</url>
     </repository>
   </repositories>
 
@@ -30,17 +46,10 @@
     </dependency>
 
     <dependency>
-      <groupId>de.pro_crafting</groupId>
-      <artifactId>regionslibrary</artifactId>
-      <version>0.1.4-SNAPSHOT</version>
+      <groupId>org.bstats</groupId>
+      <artifactId>bstats-bukkit</artifactId>
+      <version>1.8</version>
       <scope>compile</scope>
-    </dependency>
-
-    <dependency>
-      <groupId>org.bukkit</groupId>
-      <artifactId>bukkit</artifactId>
-      <version>1.7.10-R0.1-SNAPSHOT</version>
-      <scope>provided</scope>
     </dependency>
 
     <dependency>
@@ -48,20 +57,6 @@
       <artifactId>Vault</artifactId>
       <version>1.4.1</version>
       <scope>provided</scope>
-    </dependency>
-
-    <dependency>
-      <groupId>org.mcstats.bukkit</groupId>
-      <artifactId>metrics-lite</artifactId>
-      <version>R8-SNAPSHOT</version>
-      <scope>compile</scope>
-    </dependency>
-
-    <dependency>
-      <groupId>net.gravitydevelopment.updater</groupId>
-      <artifactId>updater</artifactId>
-      <version>2.1</version>
-      <scope>compile</scope>
     </dependency>
 
     <dependency>
@@ -95,23 +90,33 @@
     <dependency>
       <groupId>org.projectlombok</groupId>
       <artifactId>lombok</artifactId>
-      <version>1.16.10</version>
+      <version>${version.lombok}</version>
       <scope>provided</scope>
     </dependency>
   </dependencies>
 
   <build>
-    <resources>
-      <resource>
-        <directory>src/main/resources</directory>
-        <filtering>true</filtering>
-      </resource>
-    </resources>
     <plugins>
+      <plugin>
+        <groupId>pl.project13.maven</groupId>
+        <artifactId>git-commit-id-plugin</artifactId>
+        <version>${version.git-commit-id-plugin}</version>
+        <executions>
+          <execution>
+            <id>get-the-git-infos</id>
+            <goals>
+              <goal>revision</goal>
+            </goals>
+            <phase>initialize</phase>
+            <configuration>
+              <skipPoms>false</skipPoms>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-shade-plugin</artifactId>
-        <version>2.3</version>
         <executions>
           <execution>
             <phase>package</phase>
@@ -121,30 +126,13 @@
             <configuration>
               <relocations>
                 <relocation>
-                  <pattern>org.mcstats</pattern>
-                  <shadedPattern>de.pro_crafting.wg.metrics</shadedPattern>
-                </relocation>
-                <relocation>
-                  <pattern>net.gravitydevelopment.updater</pattern>
-                  <shadedPattern>de.pro_crafting.wg.updater</shadedPattern>
+                  <pattern>org.bstats</pattern>
+                  <shadedPattern>com.pro_crafting.mc.wg.metrics</shadedPattern>
                 </relocation>
               </relocations>
             </configuration>
           </execution>
         </executions>
-      </plugin>
-
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.1</version>
-        <configuration>
-          <verbose>true</verbose>
-          <fork>true</fork>
-          <compilerVersion>1.8</compilerVersion>
-          <source>1.8</source>
-          <target>1.8</target>
-        </configuration>
       </plugin>
     </plugins>
   </build>
