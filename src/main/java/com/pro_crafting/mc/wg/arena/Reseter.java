@@ -2,6 +2,12 @@ package com.pro_crafting.mc.wg.arena;
 
 import java.io.File;
 
+import com.pro_crafting.mc.wg.blockgenerator.JobState;
+import com.pro_crafting.mc.wg.blockgenerator.JobStateChangedCallback;
+import com.pro_crafting.mc.wg.blockgenerator.criteria.CuboidCriteria;
+import com.pro_crafting.mc.wg.blockgenerator.job.Job;
+import com.pro_crafting.mc.wg.blockgenerator.job.SimpleJob;
+import com.pro_crafting.mc.wg.blockgenerator.provider.SingleBlockProvider;
 import com.pro_crafting.mc.wg.event.ArenaStateChangeEvent;
 import org.bukkit.Material;
 import org.bukkit.World;
@@ -17,16 +23,6 @@ import com.sk89q.worldedit.WorldEdit;
 import com.sk89q.worldedit.bukkit.BukkitUtil;
 import com.sk89q.worldedit.regions.CuboidRegion;
 
-import de.pro_crafting.common.Point;
-import de.pro_crafting.common.Size;
-import de.pro_crafting.generator.JobState;
-import de.pro_crafting.generator.JobStateChangedCallback;
-import de.pro_crafting.generator.criteria.CuboidCriteria;
-import de.pro_crafting.generator.job.Job;
-import de.pro_crafting.generator.job.SimpleJob;
-import de.pro_crafting.generator.provider.SchematicProvider;
-import de.pro_crafting.generator.provider.SingleBlockProvider;
-import de.pro_crafting.region.Region;
 import com.pro_crafting.mc.wg.WarGear;
 import com.pro_crafting.mc.wg.group.GroupSide;
 

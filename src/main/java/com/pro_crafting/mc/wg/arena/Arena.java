@@ -1,24 +1,17 @@
 package com.pro_crafting.mc.wg.arena;
 
+import com.pro_crafting.mc.wg.blockgenerator.JobState;
+import com.pro_crafting.mc.wg.blockgenerator.JobStateChangedCallback;
+import com.pro_crafting.mc.wg.blockgenerator.criteria.SingleBlockCriteria;
+import com.pro_crafting.mc.wg.blockgenerator.job.Job;
+import com.pro_crafting.mc.wg.blockgenerator.job.SimpleJob;
+import com.pro_crafting.mc.wg.blockgenerator.provider.BlockSearchProvider;
+import com.pro_crafting.mc.wg.blockgenerator.provider.SingleBlockProvider;
 import com.pro_crafting.mc.wg.event.ArenaStateChangeEvent;
 import com.sk89q.worldedit.Vector;
 import com.sk89q.worldedit.bukkit.BukkitUtil;
 import com.sk89q.worldedit.regions.CuboidRegion;
 
-import de.pro_crafting.common.Point;
-import de.pro_crafting.common.Size;
-import de.pro_crafting.generator.BlockData;
-import de.pro_crafting.generator.JobState;
-import de.pro_crafting.generator.JobStateChangedCallback;
-import de.pro_crafting.generator.criteria.Criteria;
-import de.pro_crafting.generator.criteria.SingleBlockCriteria;
-import de.pro_crafting.generator.job.Job;
-import de.pro_crafting.generator.job.SimpleJob;
-import de.pro_crafting.generator.provider.BlockSearchProvider;
-import de.pro_crafting.generator.provider.SingleBlockProvider;
-import de.pro_crafting.region.Region;
-import de.pro_crafting.region.flags.Flag;
-import de.pro_crafting.region.flags.StateValue;
 import com.pro_crafting.mc.wg.ErrorMessages;
 import com.pro_crafting.mc.wg.WarGear;
 import com.pro_crafting.mc.wg.group.Group;

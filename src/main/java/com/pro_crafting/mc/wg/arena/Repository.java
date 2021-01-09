@@ -2,13 +2,12 @@ package com.pro_crafting.mc.wg.arena;
 
 import com.google.common.collect.Sets;
 
-import de.pro_crafting.region.Region;
-import de.pro_crafting.region.RegionManager;
 import com.pro_crafting.mc.wg.ErrorMessages;
 import com.pro_crafting.mc.wg.Util;
 import com.pro_crafting.mc.wg.WarGear;
 import com.pro_crafting.mc.wg.group.GroupSide;
 
+import com.sk89q.worldguard.protection.managers.RegionManager;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
@@ -16,7 +15,6 @@ import org.bukkit.configuration.file.YamlConfiguration;
 
 import java.io.File;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import lombok.AccessLevel;

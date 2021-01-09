@@ -1,18 +1,15 @@
 package com.pro_crafting.mc.wg.ui;
 
+import com.pro_crafting.mc.common.scoreboard.Criteria;
+import com.pro_crafting.mc.wg.WarGear;
 import com.pro_crafting.mc.wg.arena.Arena;
 import com.pro_crafting.mc.wg.arena.State;
 import com.pro_crafting.mc.wg.event.ArenaStateChangeEvent;
-import de.pro_crafting.common.scoreboard.Criteria;
-import com.pro_crafting.mc.wg.WarGear;
 import com.pro_crafting.mc.wg.group.Group;
 import com.pro_crafting.mc.wg.group.GroupManager;
 import com.pro_crafting.mc.wg.group.GroupMember;
 import com.pro_crafting.mc.wg.group.PlayerGroupKey;
 import com.pro_crafting.mc.wg.group.PlayerRole;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.OfflinePlayer;
@@ -24,6 +21,10 @@ import org.bukkit.scheduler.BukkitTask;
 import org.bukkit.scoreboard.DisplaySlot;
 import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.scoreboard.Team;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
 
 public class ScoreboardDisplay implements Listener{
 	private WarGear plugin;	

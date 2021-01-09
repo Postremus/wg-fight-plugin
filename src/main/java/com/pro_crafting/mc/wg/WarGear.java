@@ -1,13 +1,12 @@
 package com.pro_crafting.mc.wg;
 
+import com.pro_crafting.mc.commandframework.CommandArgs;
+import com.pro_crafting.mc.commandframework.CommandFramework;
+import com.pro_crafting.mc.commandframework.Completer;
+import com.pro_crafting.mc.common.scoreboard.ScoreboardManager;
 import com.pro_crafting.mc.wg.arena.ArenaManager;
+import com.pro_crafting.mc.wg.blockgenerator.BlockGenerator;
 import com.pro_crafting.mc.wg.ui.ScoreboardDisplay;
-import de.pro_crafting.commandframework.CommandArgs;
-import de.pro_crafting.commandframework.CommandFramework;
-import de.pro_crafting.commandframework.Completer;
-import de.pro_crafting.common.scoreboard.ScoreboardManager;
-import de.pro_crafting.generator.BlockGenerator;
-import de.pro_crafting.region.RegionManager;
 import com.pro_crafting.mc.wg.commands.ArenaCommands;
 import com.pro_crafting.mc.wg.commands.TeamCommands;
 import com.pro_crafting.mc.wg.commands.WarGearCommands;
@@ -15,11 +14,10 @@ import com.pro_crafting.mc.wg.group.PlayerGroupKey;
 import com.pro_crafting.mc.wg.group.invitation.InvitationManager;
 import com.pro_crafting.mc.wg.modes.ModeManager;
 
-import net.gravitydevelopment.updater.Updater;
+import com.sk89q.worldguard.protection.managers.RegionManager;
 
 import org.bukkit.event.HandlerList;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.mcstats.MetricsLite;
 
 import java.io.File;
 import java.io.IOException;
@@ -32,8 +30,6 @@ public class WarGear extends JavaPlugin {
 	private ArenaManager arenaManager;
 	private CommandFramework cmdFramework;
 	private WgEconomy eco;
-	private MetricsLite metrics;
-	private Updater updater;
 	private WgListener wgListener;
 	private File arenaFolder;
 	private OfflineManager offlineManager;
@@ -58,7 +54,6 @@ public class WarGear extends JavaPlugin {
 			this.eco = new WgEconomy(this);
 		}
 		startMetrics();
-		startUpdater();
 		registerCommands();
 		this.wgListener = new WgListener(this);
 		this.offlineManager = new OfflineManager(this);
@@ -95,7 +90,7 @@ public class WarGear extends JavaPlugin {
 		this.getLogger().info("Plugin erfolgreich deaktiviert!");
 	}
 	
-	@Completer (name="wgk")
+	@Completer(name="wgk")
 	public List<String> completeCommands(CommandArgs args) {
 		List<String> ret = new ArrayList<>();
 		String label = args.getCommand().getLabel();
@@ -138,12 +133,6 @@ public class WarGear extends JavaPlugin {
 		}
 	}
 	
-	private void startUpdater() {
-		if (repo.isUpdateCheckEnabled()) {
-			updater = new Updater(this, 66631, this.getFile(), Updater.UpdateType.NO_DOWNLOAD, false);
-		}
-	}
-
 	public Repository getRepo() {
 		return this.repo;
 	}
@@ -158,10 +147,6 @@ public class WarGear extends JavaPlugin {
 	
 	public CommandFramework GetCmdFramework() {
 		return this.cmdFramework;
-	}
-	
-	public Updater getUpdater() {
-		return this.updater;
 	}
 	
 	public File getArenaFolder()

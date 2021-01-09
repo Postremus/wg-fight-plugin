@@ -1,17 +1,13 @@
 package com.pro_crafting.mc.wg;
+
+import com.pro_crafting.mc.wg.kit.KitProvider;
+import com.sk89q.worldedit.bukkit.WorldEditPlugin;
+import net.milkbowl.vault.economy.Economy;
+import org.bukkit.plugin.RegisteredServiceProvider;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-
-import net.milkbowl.vault.economy.Economy;
-
-import org.bukkit.plugin.RegisteredServiceProvider;
-
-import com.sk89q.worldedit.bukkit.WorldEditPlugin;
-
-import de.pro_crafting.kit.KitProvider;
-import de.pro_crafting.region.RegionManager;
-import de.pro_crafting.region.RegionsLibrary;
 
 public class Repository {
 	private WarGear plugin;
@@ -56,11 +52,6 @@ public class Repository {
 	public boolean areMetricsEnabled()
 	{
 		return this.plugin.getConfig().getBoolean("metrics", false);
-	}
-	
-	public boolean isUpdateCheckEnabled()
-	{
-		return this.plugin.getConfig().getBoolean("update-check", false);
 	}
 	
 	public int getOfflineKickTime()
